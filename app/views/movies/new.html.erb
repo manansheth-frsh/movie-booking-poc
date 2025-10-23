@@ -1,0 +1,39 @@
+<div class="container my-5">
+  <h1 class="mb-4">Create New Movie</h1>
+
+  <% if @movie.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+      <ul>
+        <% @movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with(model: @movie, local: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :language, class: "form-label" %>
+      <%= form.text_field :language, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :release_date, class: "form-label" %>
+      <%= form.date_field :release_date, class: "form-control" %>
+    </div>
+
+    <div class="d-grid">
+      <%= form.submit "Create Movie", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="mt-3">
+    <%= link_to 'Back to Movies', movies_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+</div>

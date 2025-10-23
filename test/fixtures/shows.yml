@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  slot: 1
+  date: 2025-10-21
+  current_available_bookings: 1
+  movie: one
+  theatre: one
+
+two:
+  slot: 1
+  date: 2025-10-21
+  current_available_bookings: 1
+  movie: two
+  theatre: two

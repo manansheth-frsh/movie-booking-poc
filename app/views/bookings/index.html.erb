@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <h1 class="mb-4">My Bookings</h1>
+
+  <div class="mb-4">
+    <%= link_to "Create New Booking", new_booking_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @bookings.any? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Movie</th>
+          <th>Theatre</th>
+          <th>City</th>
+          <th>Slot</th>
+          <th>Date</th>
+          <th>Seats Booked</th>
+          <th>Booked At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.show.movie.name %></td>
+            <td><%= booking.show.theatre.name %></td>
+            <td><%= booking.show.theatre.city %></td>
+            <td><%= booking.show.slot %></td>
+            <td><%= booking.show.date.strftime("%d %b %Y") %></td>
+            <td><%= booking.seats %></td>
+            <td><%= booking.created_at.strftime("%d %b %Y %H:%M") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>You have no bookings yet.</p>
+  <% end %>
+</div>

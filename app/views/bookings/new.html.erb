@@ -1,0 +1,67 @@
+<div class="container my-5">
+  <h1 class="mb-4">Create a Booking</h1>
+
+  <%= form_with url: new_booking_path, method: :get, local: true do |form| %>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :movie_id, "Select Movie", class: "form-label" %>
+        <%= form.collection_select :movie_id, @movies, :id, :name, { prompt: "Select a Movie" }, class: "form-select" %>
+      </div>
+
+      <div class="col-md-6">
+  <%= form.label :theatre_id, "Or Select Theatre", class: "form-label" %>
+  <%= form.collection_select :theatre_id, @theatres, :id, 
+        ->(t) { "#{t.name} (#{t.city})" }, 
+        { prompt: "Select a Theatre" }, 
+        class: "form-select" %>
+</div>
+    </div>
+
+    <div class="d-grid mb-4">
+      <%= form.submit "Show Available Shows", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  
+<% if @shows.any? %>
+  <h4 class="mb-3">Available Shows:</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% if @selected_movie %>
+          <th>Theatre</th>
+          <th>City</th>
+        <% else %>
+          <th>Movie</th>
+        <% end %>
+        <th>Slot</th>
+        <th>Date</th>
+        <th>Available Seats</th>
+        <th>Book</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shows.each do |show| %>
+        <tr>
+          <%= form_with url: bookings_path, method: :post, local: true do |form| %>
+            <% if @selected_movie %>
+              <td><%= show.theatre.name %></td>
+              <td><%= show.theatre.city %></td>
+            <% else %>
+              <td><%= show.movie.name %></td>
+            <% end %>
+            <td><%= show.slot %></td>
+            <td><%= show.date.strftime("%d %b %Y") %></td>
+            <td><%= show.current_available_bookings %></td>
+            <td>
+              <%= hidden_field_tag :show_id, show.id %>
+              <%= number_field_tag :seats, 1, min: 1, max: show.current_available_bookings, class: "form-control", style: "width:80px; display:inline;" %>
+              <%= submit_tag "Book", class: "btn btn-sm btn-primary" %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% elsif params[:movie_id].present? || params[:theatre_id].present? %>
+  <p>No shows available for the selected movie/theatre.</p>
+<% end %>

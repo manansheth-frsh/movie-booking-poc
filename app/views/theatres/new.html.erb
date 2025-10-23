@@ -1,0 +1,42 @@
+<div class="container my-5">
+  <h1 class="mb-4">Create New Theatre</h1>
+
+  <% if @theatre.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@theatre.errors.count, "error") %> prohibited this theatre from being saved:</h2>
+
+      <ul>
+        <% @theatre.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with(model: @theatre, url: theatres_path, local: true) do |form| %>
+    
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :city, class: "form-label" %>
+      <%= form.text_field :city, class: "form-control" %>
+    </div>
+
+    
+    <div class="mb-3">
+      <%= form.label :capacity, class: "form-label" %>
+      <%= form.number_field :capacity, class: "form-control", min: 1 %>
+    </div>
+
+    <div class="d-grid">
+      <%= form.submit "Create Theatre", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="mt-3">
+    <%= link_to 'Back to Theatres', theatres_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+</div>

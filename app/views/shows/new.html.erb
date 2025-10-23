@@ -1,0 +1,44 @@
+<div class="container my-5">
+  <h1 class="mb-4">Create New Show</h1>
+
+  <% if @show.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@show.errors.count, "error") %> prevented this show from being saved:</h4>
+      <ul>
+        <% @show.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with(model: @show, local: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :movie_id, "Movie", class: "form-label" %>
+      <%= form.collection_select :movie_id, @movies, :id, :name, { prompt: "Select a Movie" }, class: "form-select" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :theatre_id, "Theatre", class: "form-label" %>
+      <%= form.collection_select :theatre_id, @theatres, :id, :name, { prompt: "Select a Theatre" }, class: "form-select" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :slot, class: "form-label" %>
+      <%= form.select :slot, options_for_select([1,2,3,4]), { prompt: "Select Slot" }, class: "form-select" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :date, class: "form-label" %>
+      <%= form.date_field :date, class: "form-control" %>
+    </div>
+
+    <div class="d-grid">
+      <%= form.submit "Create Show", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="mt-3">
+    <%= link_to 'Back to Shows', shows_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+</div>

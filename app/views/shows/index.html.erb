@@ -1,0 +1,35 @@
+<div class="container my-5">
+  <h1 class="mb-4">All Shows</h1>
+
+  <div class="mb-3">
+    <%= link_to 'Create New Show', new_show_path, class: "btn btn-primary" %>
+    <%= link_to 'Back to admin', admin_path, class: "btn btn-secondary" %>
+  </div>
+
+  <% if @shows.any? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Movie</th>
+          <th>Theatre</th>
+          <th>Slot</th>
+          <th>Date</th>
+          <th>Available Bookings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shows.each do |show| %>
+          <tr>
+            <td><%= show.movie.name %></td>
+            <td><%= show.theatre.name %></td>
+            <td><%= show.slot %></td>
+            <td><%= show.date.strftime("%d %b %Y") %></td>
+            <td><%= show.current_available_bookings %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No shows available yet.</p>
+  <% end %>
+</div>

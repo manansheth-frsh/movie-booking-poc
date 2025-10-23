@@ -1,0 +1,48 @@
+# OS / Editor files
+.DS_Store
+*.swp
+*.swo
+*.idea/
+*.vscode/
+
+# Bundler config
+/.bundle
+
+# Rails logs and temp files
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
+/tmp/pids/*
+!/tmp/pids/.keep
+
+# Ignore database files
+/db/*.sqlite3
+/db/*.sqlite3-*
+
+# Ignore storage files (uploads)
+/storage/*
+!/storage/.keep
+
+# Ignore compiled assets
+/public/assets
+/public/packs
+/public/packs-test
+
+# Ignore node_modules
+/node_modules
+
+# Yarn debug logs
+yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore byebug history
+.byebug_history
+
+# Ignore master key (Rails credentials)
+/config/master.key
+
+# Ignore dump.rdb (Redis dump file)
+dump.rdb
+
