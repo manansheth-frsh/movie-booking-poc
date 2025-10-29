@@ -1,4 +1,5 @@
 class TheatresController < ApplicationController
+  include AccessConcern
   before_action :require_admin, only: [:index, :new, :create, :edit, :update, :destroy]
 
   CACHE_EXPIRY = Rails.application.config.cache_config[:cache_expiry]

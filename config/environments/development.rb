@@ -75,10 +75,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
-  domain: "gmail.com",                  # <-- Corrected to Gmail's domain
+  domain: "gmail.com",
   user_name: "manan.sheth@freshworks.com",
-  password: "....",                    # <-- This should be your App Password (if 2FA is on)
-  authentication: :plain,               # <-- Use Symbol instead of String (though String often works)
+  password: "wqkxrcntwnsykukb",
+  authentication: :login, 
   enable_starttls_auto: true
 }
 

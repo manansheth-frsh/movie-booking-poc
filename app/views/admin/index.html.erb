@@ -1,8 +1,10 @@
 <div class="container my-5">
+    
   <h1 class="mb-5 text-center">Admin Dashboard</h1>
-
+  
+  </div>
   <div class="row g-4">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <%= link_to theatres_path, class: "card text-center text-decoration-none text-dark h-100" do %>
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
           <h4 class="card-title">Theatres</h4>
@@ -10,7 +12,7 @@
       <% end %>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
       <%= link_to movies_path, class: "card text-center text-decoration-none text-dark h-100" do %>
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
           <h4 class="card-title">Movies</h4>
@@ -18,7 +20,7 @@
       <% end %>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
       <%= link_to shows_path, class: "card text-center text-decoration-none text-dark h-100" do %>
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
           <h4 class="card-title">Shows</h4>
@@ -26,13 +28,5 @@
       <% end %>
     </div>
 
-    <div class="col-md-3">
-      <div class="card text-center text-muted h-100">
-        <div class="card-body d-flex flex-column justify-content-center align-items-center">
-          <h4 class="card-title">Bookings</h4>
-          <small class="text-muted">Coming Soon</small>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

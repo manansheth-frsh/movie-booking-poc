@@ -29,6 +29,14 @@ gem 'bootstrap', '~> 5.3.3'
 gem 'jwt'
 gem 'bcrypt'
 gem 'dalli'
+gem "sidekiq", "~> 7.3"
+gem 'sidekiq-cron'
+gem 'redis'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'blueprinter'
+gem 'pagy'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -62,4 +70,3 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "sidekiq", "~> 7.3"

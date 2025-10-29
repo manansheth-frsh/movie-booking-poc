@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def index
+    # render json: UserBlueprint.render(users)
   end
 
   def show
   	puts User.find(params[:id]).name
     @user = User.find(params[:id])
+    render json: UserBlueprint.render(@user, view: :normal)
   end
 
   def new

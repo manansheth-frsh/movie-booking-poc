@@ -1,4 +1,5 @@
 class ShowsController < ApplicationController
+  include AccessConcern
   before_action :require_admin
 
   def new
@@ -12,7 +13,7 @@ class ShowsController < ApplicationController
   def create
     @show = Show.new(show_params)
     if @show.save
-      redirect_to shows_path, notice: "Show created successfully"
+        redirect_to shows_path, notice: "Show created successfully"
     else
       @movies = Movie.all
       @theatres = Theatre.all
@@ -21,12 +22,20 @@ class ShowsController < ApplicationController
   end
 
   def index
-    @shows = Show.all.order(date: :desc)
+    @shows = Show.all.order(date: :asc)
+  end
+
+  def show
+    puts "here..."
+    @show = Show.find(params[:id])
+    puts "show ->", @show.bookings
   end
 
   private
 
+
   def show_params
     params.require(:show).permit(:slot, :date, :movie_id, :theatre_id)
   end
+
 end

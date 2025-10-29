@@ -4,4 +4,6 @@ class Movie < ApplicationRecord
   validates :release_date, presence: true
 
   has_many :shows, dependent: :delete_all
+
+
 end

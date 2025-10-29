@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :require_admin, only: [:index, :new, :create, :edit, :update, :destroy]
+  include AccessConcern
+  before_action :require_admin, only: [:index, :new, :create, :show, :destroy]
   CACHE_EXPIRY = Rails.application.config.cache_config[:cache_expiry]
   MOVIES_LIST_CACHE = Rails.application.config.cache_config[:MOVIES_LIST]
 

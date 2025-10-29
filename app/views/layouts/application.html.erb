@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieBooking</title>
+    <title>CineBook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -17,11 +18,17 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
+<% unless request.path == root_path %>
+
+      <div class="card-footer d-flex justify-content-end">
+      <%= link_to 'Logout', logout_path, method: :delete, class: "btn btn-secondary" %>
+    </div>
+<% end %>
 
 <% if flash[:alert] %>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <div class="alert alert-danger alert-dismissible fade show " role="alert">
     <%= flash[:alert] %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <button type="button" class="btn-close p-4" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
 

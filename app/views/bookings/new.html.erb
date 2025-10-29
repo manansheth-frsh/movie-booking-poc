@@ -23,7 +23,11 @@
   <% end %>
   
 <% if @shows.any? %>
-  <h4 class="mb-3">Available Shows:</h4>
+<% if @selected_movie %>
+  <h4 class="mb-3">Available Shows for <%=@selected_movie.name %></h4>
+        <% else %>
+          <h4 class="mb-3">Available Shows at <%=@selected_theatre.name %></h4>
+        <% end %>
   <table class="table table-striped">
     <thead>
       <tr>
